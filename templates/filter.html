@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Resumes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="generalStyling.css"> <!-- Add this line if you have a separate CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="./images/flatImage2.png" alt="Description of Image">
+        </div>
+        <div class="form-section">
+            <h1>Filter Resumes</h1>
+            <form action="/filter" method="GET" class="filterForm">
+                <label for="filter_type">Filter by:</label>
+                <select id="filter_type" name="filter_type">
+                    <option value="phone">Phone Number</option>
+                    <option value="email">Email</option>
+                    <option value="skill">Skill</option>
+                </select><br><br>
+
+                <label for="filter_value">Enter Value:</label>
+                <input type="text" id="filter_value" name="filter_value" required><br><br>
+
+                <button type="submit">Filter</button>
+            </form>
+
+            <h2>Matching Resumes</h2>
+            <div id="results">
+                <!-- Filter results will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script will fetch and display filter results
+        document.querySelector('form').onsubmit = async function(event) {
+            event.preventDefault();
+            const filterType = document.getElementById('filter_type').value;
+            const filterValue = document.getElementById('filter_value').value;
+            const response = await fetch(`/filter?filter_type=${filterType}&filter_value=${filterValue}`);
+            const data = await response.json();
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (data.matching_resumes.length > 0) {
+                data.matching_resumes.forEach(resume => {
+                    const link = document.createElement('a');
+                    link.href = `/download/${resume.filename}`;
+                    link.innerText = `Download ${resume.filename}`;
+                    link.target = "_blank";
+                    resultsDiv.appendChild(link);
+                    resultsDiv.appendChild(document.createElement('br'));
+                });
+            } else {
+                resultsDiv.innerText = 'No matching resumes found.';
+            }
+        };
+    </script>
+</body>
+</html>

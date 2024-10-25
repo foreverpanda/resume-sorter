@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Checker UI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+
+      
+:root {
+    --primary-color: #f1b602;
+    --secondary-color: white;
+  }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+    width: 100vw;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+button {
+    background-color: #f1b602;
+    border: none;
+    padding: 1.2vw 2vw;
+    color: #fff;
+    font-size: 1.2vw;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e0a500;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    background-color: white ;
+    height: 5vw;
+}
+
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: teal;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.auth-buttons button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+
+
+
+.resume-checker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: white;
+    margin-top: 5vw;
+}
+.checker-image{
+    background-color: #e9f3f3;
+    border-radius: 1vw;
+    
+}
+
+.resume-checker h1 {
+    font-size: 36px;
+}
+
+.resume-checker p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.checker-text {
+    max-width: 500px;
+}
+
+.checker-image img {
+    width: 50vw;
+}
+
+
+/* Resume Insights Section */
+.resume-insights {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--background-light);
+}
+
+.resume-insights h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.insight-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    margin-bottom: 2vw;
+}
+
+.insight-box {
+    padding: 20px;
+    border: 1px solid #eee;
+    width: 15vw;
+    background-color: var(--background-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.insight-box h3 {
+    color: var(--primary-color);
+}
+.in-img{
+    width: 100%;
+}
+
+
+
+.insight-box h3 {
+    color: #f1b602;
+}
+.accordion-section {
+    padding: 50px;
+    background-color: #f8f9fb;
+    max-width: 800px;
+    margin: 2vw auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-section h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.accordion-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-title {
+    background-color: #f1b602;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-title:hover {
+    background-color: #e0a500;
+}
+
+/* opening animation */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: white;
+    padding: 0 15px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* accordion  active */
+.accordion-item.active .accordion-content {
+    max-height: 500px; 
+    padding: 15px;
+    opacity: 1;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.3s ease;
+}
+
+.accordion-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.accordion-content p, .accordion-content ul {
+    margin: 10px 0;
+}
+
+
+
+
+/* Is Your Resume in Good Standing Section */
+.resume-standing {
+    background-color: #005149;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    height: 85vh;
+
+    font-family: 'Roboto';
+}
+
+
+.standing-white{
+    margin: 1vw 0vw;
+    background-color: white;
+    padding: 1vw 4vw;
+    border-radius: 3vw;
+    width: 60vw;
+    height: 37vw;
+    margin: 0 auto;
+    margin-bottom: 2vw;
+}
+
+
+
+.resume-standing-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    
+
+}
+
+
+
+.resume-standing h2 {
+    font-size: 28px;
+    color: black;
+}
+
+.standing-text {
+
+    width: 50%;
+    color: black;
+}
+
+.standing-text ul {
+    list-style-type:disc;
+    text-align: left;
+
+}
+
+
+.standing-image {
+    background-color: #e9f3f3;
+    height: 450px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.standing-image img{
+    width: 350px;
+}
+
+
+
+
+/* Footer  sEXTION*/
+
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+        /* Basic styles for modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px;
+            border-radius: 5px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+        }
+        .modal-button:hover {
+            background-color: #45a049;
+        }
+        
+        /* Accordion styles (from previous example) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 300px; /* Adjust based on your content size */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Resume<span>Checker</span></div>
+        <nav>
+            <ul>
+                <!-- Add navigation items if needed -->
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="signup" id="checkNowBtn">Check Now</button>
+        </div>
+    </header>
+
+    <!-- Resume Checker Section -->
+    <section class="resume-checker">
+        <div class="checker-text">
+            <h1>Resume Checker</h1>
+            <p>
+                The Resume Checker analyzes your existing resume for gaps, weaknesses,
+                and opportunities for improvement to determine your holistic resume
+                score. Get an accurate, detailed assessment of your current resume
+                with recommendations you can act on.
+            </p>
+            <button>Check Your Resume Score</button>
+        </div>
+        <div class="checker-image">
+            <img src="./images/65315d884ee0577063016a2c_Hero_ResumeChecker_Test-p-800.png" alt="Resume Example Image" />
+        </div>
+    </section>
+
+    <!-- Resume Insights Section -->
+    <section class="resume-insights">
+        <h2>Resume Insights to Strengthen Your Next Application</h2>
+        <div class="insight-boxes">
+            <div class="insight-box">
+                <img class="in-img" src="./images/653076be9d32726f422f7998_Enhance_Key_Sections.png" alt="" />
+                <h3>Quickly Uncover Key Gaps in Your Resume</h3>
+                <p>Get a detailed breakdown of the existing issues with your resume, and how to fix them.</p>
+            </div>
+            <div class="insight-box">
+                <img class="in-img" src="./images/653076035c2e1cf82c1e1889_Show_Me-p-500.png" alt="" />
+                <h3>Check Your Resume for Quality Issues & Misalignments</h3>
+                <p>Ensure that your resume is aligned with best practices for presenting your skills and qualifications.</p>
+            </div>
+            <div class="insight-box">
+                <img class="in-img" src="./images/653072fe8b5077f98b76bee9_Uncover_Key_Gaps.png" alt="" />
+                <h3>Find Ways to Enhance Key Sections of Your Resume</h3>
+                <p>Get recommendations to strengthen crucial parts of your resume and increase your chances of success.</p>
+            </div>
+        </div>
+        <button class="cta-button">Scan Your Resume for Free</button>
+    </section>
+
+    <!-- Is Your Resume in Good Standing Section -->
+    <section class="resume-standing">
+        <div class="standing-white">
+            <h2>Is Your Resume in Good Standing?</h2>
+            <div class="resume-standing-content">
+                <div class="standing-image">
+                    <img src="./images/aaaa.png" alt="Resume Analysis Image" />
+                </div>
+                <div class="standing-text">
+                    <p>
+                        Our Resume Checker examines each individual section of your resume
+                        to identify pressing issues that have been influential in the
+                        hiring process.
+                    </p>
+                    <p>
+                        The resume check is designed to deliver personalized
+                        recommendations for how you can enhance your resume content and
+                        appearance meaningfully.
+                    </p>
+                    <ul>
+                        <li>Resume Structure</li>
+                        <li>Information Completeness</li>
+                        <li>Measurable Results</li>
+                        <li>Keyword Usage</li>
+                        <li>Quality Signals</li>
+                        <li>+ More</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button class="cta-button">Audit Your Resume in Seconds</button>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="accordion-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion-container">
+            <div class="accordion-item">
+                <button class="accordion-title">How is the resume score calculated?</button>
+                <div class="accordion-content">
+                    <p>
+                        The Resume Checker uses a scoring system that factors in a variety
+                        of data points from different types of resume information. Some of
+                        these include:
+                    </p>
+                    <ul>
+                        <li>Resume Structure</li>
+                        <li>Measurable Results</li>
+                        <li>Keyword Usage</li>
+                        <li>And more</li>
+                    </ul>
+                    <p>
+                        Using this criteria, we grade your resume on a scale of 0-100%,
+                        according to best practices that have been proven to drive hiring
+                        decisions.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-title">What is considered a good resume score?</button>
+                <div class="accordion-content">
+                    <p>
+                        A good resume score is 80% or higher. This means that your current
+                        resume version aligns with most of the recommended best practices,
+                        and is not missing any vital information.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-title">Which resume issues are most important to check?</button>
+                <div class="accordion-content">
+                    <p>
+                        While we recommend addressing all of the issues that are
+                        highlighted in the resume analysis, they won’t always have equal
+                        importance.
+                    </p>
+                    <p>
+                        The exact order of priority will depend on your particular
+                        situation and which position you're applying for, but we urge you
+                        to address the issues from the “Resume Structure” group first if
+                        present.
+                    </p>
+                    <p>
+                        You want to maximize every inch of your resume to make the
+                        greatest possible impact/impression, so we suggest first making
+                        sure that your resume has all of the information it needs.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-title">Does the resume check factor in ATS?</button>
+                <div class="accordion-content">
+                    <p>
+                        The Resume Checker analyzes your resume on many of the same
+                        factors and criteria that the ATS looks for.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Made by Kitler</p>
+    </footer>
+<!-- Modal for Sign Up / Log In -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Choose an Option</h2>
+      <button class="modal-button" id="signUpBtn">Sign Up</button>
+      <button class="modal-button" id="logInBtn">Log In</button>
+  </div>
+</div>
+
+<script>
+  // Accordion functionality
+  document.querySelectorAll('.accordion-title').forEach(button => {
+      button.addEventListener('click', () => {
+          const accordionItem = button.parentElement;
+          const content = button.nextElementSibling;
+
+          // Toggle active class to expand or collapse
+          accordionItem.classList.toggle('active');
+
+          // Smooth height transition
+          if (accordionItem.classList.contains('active')) {
+              content.style.maxHeight = content.scrollHeight + 'px';
+              content.style.padding = '15px';
+          } else {
+              content.style.maxHeight = '0';
+              content.style.padding = '0 15px';
+          }
+
+          // Collapse any open accordion when clicking a different title
+          document.querySelectorAll('.accordion-item').forEach(item => {
+              if (item !== accordionItem && item.classList.contains('active')) {
+                  item.classList.remove('active');
+                  item.querySelector('.accordion-content').style.maxHeight = '0';
+                  item.querySelector('.accordion-content').style.padding = '0 15px';
+              }
+          });
+      });
+  });
+
+  // Modal functionality
+  const modal = document.getElementById("modal");
+  const checkNowBtn = document.getElementById("checkNowBtn");
+  const closeModal = document.getElementsByClassName("close")[0];
+  const logInBtn = document.getElementById("logInBtn");
+  const signUpBtn = document.getElementById("signUpBtn");
+
+  // Open the modal when the button is clicked
+  checkNowBtn.onclick = function() {
+      modal.style.display = "block";
+  }
+
+  // Close the modal when the close button is clicked
+  closeModal.onclick = function() {
+      modal.style.display = "none";
+  }
+
+  // Close the modal when clicking outside of the modal content
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+
+  // Redirect to login.html when the Log In button is clicked
+  logInBtn.onclick = function() {
+      window.location.href = 'login.html'; // Redirect to login.html
+  }
+
+  // You can also add functionality for Sign Up if needed
+  signUpBtn.onclick = function() {
+      // Add your Sign Up functionality here or redirect if you have a sign up page
+      alert('Sign Up functionality is not implemented yet.'); // Placeholder alert
+  }
+</script>
+</body>
+</html>

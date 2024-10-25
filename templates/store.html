@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="generalStyling.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="./images/flatIcon-971.jpg" alt="Description of Image">
+        </div>
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="form-section">
+            <h1>Store Resume</h1>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="skills">Skills (comma-separated):</label>
+            <input type="text" id="skills" name="skills" required>
+
+            <label for="resume">Upload Resume (PDF):</label>
+            <input type="file" id="resume" name="file" accept="application/pdf" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <a href="/filter">Click to filter resume</a>
+</body>
+</html>

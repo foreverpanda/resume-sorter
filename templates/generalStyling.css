@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f0f4f8, #d9e4ec);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2em;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Form styling */
+form {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    /* max-width:; */
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #666;
+    width: 100%;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccd6dd;
+    border-radius: 5px;
+    transition: border 0.3s ease;
+
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus {
+    border-color: #a0c4ff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #a0c4ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    
+}
+
+button:hover {
+    background: #89b6ff;
+}
+
+a {
+    color: #5b88b4;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #89b6ff;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+/* Container for image and form */
+.container {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+}
+
+/* Image section styles */
+.image-section {
+    flex: 1; /* Take up 50% of the container */
+    padding-right: 20px; /* Spacing between image and form */
+}
+
+.image-section img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional rounded corners */
+}
+
+/* Form section styles */
+.form-section {
+    flex: 1; /* Take up 50% of the container */
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.filterForm{
+    width: 700px;
+}
